@@ -10,6 +10,7 @@ public class Order
     public string CustomerName { get; set; } = string.Empty;
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
+    // Тут має бути Product, НЕ ProductEntity
     public List<Product> Items { get; set; } = new();
 
     public void AddItem(Product item) => Items.Add(item);
