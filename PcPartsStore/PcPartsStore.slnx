@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="PcPartsStore.Common/PcPartsStore.Common.csproj" />
+  <Project Path="PcPartsStore.Console/PcPartsStore.Console.csproj" />
+  <Project Path="PcPartsStore.Infrastructure/PcPartsStore.Infrastructure.csproj" Id="92ae4d71-b36d-40da-b678-ff33d099f360" />
+</Solution>
