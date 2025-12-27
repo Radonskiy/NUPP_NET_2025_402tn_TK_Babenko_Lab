@@ -1,0 +1,6 @@
+@PcPartsStore.REST_HostAddress = http://localhost:5269
+
+GET {{PcPartsStore.REST_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
