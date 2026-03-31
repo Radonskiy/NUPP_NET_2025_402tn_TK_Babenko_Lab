@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="PcPartsStore.Common/PcPartsStore.Common.csproj" />
+  <Project Path="PcPartsStore.Console/PcPartsStore.Console.csproj" />
+  <Project Path="PcPartsStore.Tests/PcPartsStore.Tests.csproj" Id="aaa844fc-fff5-4d14-82da-6bbcd3df46ea" />
+</Solution>
