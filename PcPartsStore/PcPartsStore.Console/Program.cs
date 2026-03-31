@@ -20,7 +20,7 @@ namespace PcPartsStore.Console
 
             global::System.Console.WriteLine("=== ПІСЛЯ CREATE ===");
             foreach (var p in crud.ReadAll())
-                global::System.Console.WriteLine(p.ToShortString()); // extension method
+                global::System.Console.WriteLine(p.ToShortString());
 
             // READ
             global::System.Console.WriteLine("\n=== READ (GPU) ===");
@@ -35,11 +35,24 @@ namespace PcPartsStore.Console
             foreach (var p in crud.ReadAll())
                 global::System.Console.WriteLine(p.ToShortString());
 
+            // SAVE
+            global::System.Console.WriteLine("\n=== SAVE TO FILE ===");
+            crud.Save("products.json");
+            global::System.Console.WriteLine("Дані збережено у файл products.json");
+
+            // Створюємо новий сервіс і завантажуємо дані з файлу
+            ICrudService<Product> loadedCrud = new CrudService<Product>();
+            loadedCrud.Load("products.json");
+
+            global::System.Console.WriteLine("\n=== ПІСЛЯ LOAD ===");
+            foreach (var p in loadedCrud.ReadAll())
+                global::System.Console.WriteLine(p.ToShortString());
+
             // REMOVE
             global::System.Console.WriteLine("\n=== REMOVE (CPU) ===");
-            crud.Remove(cpu.Id);
+            loadedCrud.Remove(cpu.Id);
 
-            foreach (var p in crud.ReadAll())
+            foreach (var p in loadedCrud.ReadAll())
                 global::System.Console.WriteLine(p.ToShortString());
 
             global::System.Console.WriteLine("\nГотово. Enter...");

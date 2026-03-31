@@ -12,7 +12,7 @@ namespace PcPartsStore.Common.Services
         T Update(T item);
         bool Remove(Guid id);
 
-
+        void Save(string filePath);
+        void Load(string filePath);
     }
-
 }

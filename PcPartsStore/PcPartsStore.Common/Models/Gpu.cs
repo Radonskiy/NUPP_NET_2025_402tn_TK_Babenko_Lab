@@ -17,6 +17,5 @@ public class Gpu : Product
     }
 
     public override string GetInfo()
-    => base.GetInfo() + $", VRAM: {MemoryGb} GB, Chipset: {Chipset}, TDP: {TdpWatts}W";
-
+        => base.GetInfo() + $", VRAM: {MemoryGb} GB, Chipset: {Chipset}, TDP: {TdpWatts}W";
 }

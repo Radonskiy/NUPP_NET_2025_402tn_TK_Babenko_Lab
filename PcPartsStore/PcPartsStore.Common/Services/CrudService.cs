@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
+using System.Text.Json;
 
 namespace PcPartsStore.Common.Services
 {
@@ -17,7 +19,6 @@ namespace PcPartsStore.Common.Services
 
         public T? Read(Guid id)
         {
-            // Шукаємо властивість Id типу Guid
             return _items.FirstOrDefault(x =>
             {
                 var prop = x.GetType().GetProperty("Id");
@@ -34,7 +35,6 @@ namespace PcPartsStore.Common.Services
         {
             if (item is null) throw new ArgumentNullException(nameof(item));
 
-            // Беремо Id з item
             var prop = item.GetType().GetProperty("Id");
             if (prop is null) throw new InvalidOperationException("Об'єкт не має властивості Id.");
 
@@ -57,6 +57,34 @@ namespace PcPartsStore.Common.Services
 
             _items.Remove(existing);
             return true;
+        }
+
+        public void Save(string filePath)
+        {
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true
+            };
+
+            var json = JsonSerializer.Serialize(_items, options);
+            File.WriteAllText(filePath, json);
+        }
+
+        public void Load(string filePath)
+        {
+            if (!File.Exists(filePath))
+                throw new FileNotFoundException("Файл не знайдено.", filePath);
+
+            var json = File.ReadAllText(filePath);
+
+            var loadedItems = JsonSerializer.Deserialize<List<T>>(json);
+
+            _items.Clear();
+
+            if (loadedItems != null)
+            {
+                _items.AddRange(loadedItems);
+            }
         }
     }
 }

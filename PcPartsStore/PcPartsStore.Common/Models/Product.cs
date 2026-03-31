@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 namespace PcPartsStore.Common.Models;
 
+[JsonPolymorphic(TypeDiscriminatorPropertyName = "$type")]
+[JsonDerivedType(typeof(Cpu), "cpu")]
+[JsonDerivedType(typeof(Gpu), "gpu")]
 public abstract class Product
 {
     // static поле (лічильник створених продуктів)
