@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="PcPartsStore.Common/PcPartsStore.Common.csproj" />
+  <Project Path="PcPartsStore.Console/PcPartsStore.Console.csproj" />
+</Solution>
